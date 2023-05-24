@@ -3,7 +3,12 @@ import { lazy, Suspense } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
 import styled from 'styled-components';
 import css from './app.module.css';
-// import
+import { NotFound } from "./NotFound/NotFound";
+
+const Home = lazy(() => import('./Home/Home'));
+const Movies = lazy(() => import('./Movies/Movies'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
 
 export const App = () => {
     const StyledLink = styled(NavLink)`
@@ -32,13 +37,13 @@ export const App = () => {
 
     <Suspense fallback={<p>Load page...</p>}>
         <Routes>
-            {/* <Route path="/" element={} />
-            <Route path="/" element={} />
-            <Route path="/" element={}>
-                <Route path="/" element={} />
-                <Route path="/" element={} />
+            <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/movies/:movieId" element={<MovieDetails />}>
+                <Route path="cast" element={<Cast />} />
+                {/* <Route path="/" element={} /> */}
             </Route>
-            <Route path="/" element={} /> */}
+            <Route path="*" element={<NotFound />} />
         </Routes>
     </Suspense>
     </>

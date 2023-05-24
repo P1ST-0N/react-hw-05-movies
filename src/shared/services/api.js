@@ -8,11 +8,21 @@ const instance = axios.create({
   },
 });
 
-export async function getMovieDetails(id) {
+export async function getTrendingMovies() {
   const query = `/trending/movie/week`;
   try {
     const { data } = await instance.get(query);
     return data.results;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getMovieDetails(id) {
+  const query = `/movie/${id}`;
+  try {
+    const { data } = await instance.get(query);
+    return data;
   } catch (error) {
     throw error;
   }
