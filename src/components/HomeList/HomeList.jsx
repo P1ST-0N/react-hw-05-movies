@@ -6,7 +6,8 @@ export const HomeList = ({ films }) => {
   
     return (
       <List>
-        {films.map(film => (
+        {/* added first comparison films */}
+        {films && films.map(film => (
           <Item key={film.id}>
             <Link
               to={`/movies/${film.id}`}
