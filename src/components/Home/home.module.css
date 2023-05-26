@@ -8,11 +8,11 @@
     left: -20px;
 } */
 
-/* .movieItem:hover,
+.movieItem:hover,
 .movieItem:focus {
     color: orange;
     cursor: pointer;
-} */
+}
 
 .title {
     text-align: center;
