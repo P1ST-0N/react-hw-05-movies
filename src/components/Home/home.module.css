@@ -1,4 +1,4 @@
-.movieItem::before {
+/* .movieItem::before {
     content: "";
     background-image: url(../SVG/film.svg);
     background-size: cover;
@@ -6,17 +6,16 @@
     width: 25px;
     height: 25px;
     left: -20px;
-    /* fill: #272727; */
-}
+} */
 
-.movieItem:hover,
+/* .movieItem:hover,
 .movieItem:focus {
     color: orange;
     cursor: pointer;
-}
+} */
 
-/* .title {
+.title {
     text-align: center;
     color: black;
     font-style: italic;
-  } */
+  }

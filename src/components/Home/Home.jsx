@@ -4,15 +4,16 @@ import { ListMovies, MovieItem } from "./home.styled";
 import { getTrendingMovies } from "../../shared/services/api";
 import css from "./home.module.css";
 
-// import { HomeList } from "../HomeList/HomeList";
+import { HomeList } from "../HomeList/HomeList";
 
 const Home = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const location = useLocation();
+  // const location = useLocation();
 
-  // const [films, setFilms] = useState([]);
+  const [films, setFilms] = useState([]);
+
   // useEffect(() => {
   //   getTrendingMovies().then((data) => setFilms(data.results));
   // }, []);
@@ -33,10 +34,13 @@ const Home = () => {
 
   return (
     <>
-      {/* <h1 className={css.title}>Trending today</h1>
-      <HomeList films={films} /> */}
+    <ListMovies>
+    <h1 className={css.title}>Trending today</h1>
+      {loading ? 'loading...' : <HomeList films={data} />}
+    </ListMovies>
+      
 
-      <ListMovies>
+      {/* <ListMovies>
         <h2 className={css.title}>Trending movies:</h2>
         {loading
           ? "Loading..."
@@ -51,7 +55,7 @@ const Home = () => {
                 </Link>
               </MovieItem>
             ))}
-      </ListMovies>
+      </ListMovies> */}
     </>
   );
 };
