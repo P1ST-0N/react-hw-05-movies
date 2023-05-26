@@ -4,7 +4,7 @@ import { ListMovies, MovieItem } from "./home.styled";
 import { getTrendingMovies } from "../../shared/services/api";
 import css from "./home.module.css";
 
-import { HomeList } from "../HomeList/HomeList";
+// import { HomeList } from "../HomeList/HomeList";
 
 const Home = () => {
   const [data, setData] = useState(null);
