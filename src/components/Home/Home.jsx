@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { ListMovies, MovieItem } from "./home.styled";
+// import { Link, useLocation } from "react-router-dom";
+import { ListMovies } from "./home.styled";
 import { getTrendingMovies } from "../../shared/services/api";
 import css from "./home.module.css";
 
@@ -12,7 +12,7 @@ const Home = () => {
 
   // const location = useLocation();
 
-  const [films, setFilms] = useState([]);
+  // const [films, setFilms] = useState([]);
 
   // useEffect(() => {
   //   getTrendingMovies().then((data) => setFilms(data.results));
@@ -34,11 +34,10 @@ const Home = () => {
 
   return (
     <>
-    <ListMovies>
-    <h1 className={css.title}>Trending today</h1>
-      {loading ? 'loading...' : <HomeList films={data} />}
-    </ListMovies>
-      
+      <ListMovies>
+        <h1 className={css.title}>Trending today</h1>
+        {loading ? "loading..." : <HomeList films={data} />}
+      </ListMovies>
 
       {/* <ListMovies>
         <h2 className={css.title}>Trending movies:</h2>
