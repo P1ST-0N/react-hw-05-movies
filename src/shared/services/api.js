@@ -28,6 +28,16 @@ export async function getMovieDetails(id) {
   }
 }
 
+export async function getPersonDetails(id) {
+  const query = `/person/${id}`;
+  try {
+    const { data } = await instance.get(query);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getMovieCast(id) {
   const query = `/movie/${id}/credits`;
   try {

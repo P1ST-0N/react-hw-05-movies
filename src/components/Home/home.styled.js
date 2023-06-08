@@ -8,7 +8,8 @@ export const ListMovies = styled.ul`
   list-style-type: none;
       margin-bottom: 10px;
     font-size: 20px;
-    margin-left: 100px;
+    margin: 0;
+    padding: 0;
 `;
 
 export const MovieItem = styled.li`

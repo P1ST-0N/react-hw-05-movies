@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { searchMovie } from "../../shared/services/api";
 import css from "./movies.module.css";
+
+import { HomeList } from "../HomeList/HomeList";
 
 const Movies = () => {
   const [data, setData] = useState(null);
@@ -12,13 +14,22 @@ const Movies = () => {
 
   const [query, setQuery] = useState(() => searchQuery || "");
 
-  const location = useLocation();
+  // const location = useLocation();
 
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
-        const { results } = await searchMovie(searchQuery);
+        let { results } = await searchMovie(searchQuery);
+
+        results = results.map(el => {
+          return {
+            ...el,
+            vote_average: el.vote_average.toFixed(1),
+            popularity: el.popularity.toString().substring(0, 2),
+          }
+        })
+
         setData(results);
         setLoading(false);
       } catch (error) {
@@ -64,15 +75,9 @@ const Movies = () => {
         {searchQuery ? (
           loading ? (
             "Loading..."
-          ) : data.length > 0 ? (
-            data.map(({ title, id }) => (
-              <li key={id} className={css.listItem}>
-                <Link state={{ from: location }} to={`/movies/${id}`}>
-                  {title}
-                </Link>
-              </li>
-            ))
-          ) : (
+          ) : data.length > 0 ?
+            <HomeList films={data} />
+           : (
             <p>
               No movies with this title were found. Try entering another title
             </p>

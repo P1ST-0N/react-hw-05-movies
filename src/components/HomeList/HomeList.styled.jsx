@@ -8,6 +8,7 @@ export const List = styled.ul`
   flex-wrap: wrap;
   /* border: 2px solid #f99e8e; */
   gap: 30px;
+  padding: 0;
 `;
 
 export const Image = styled.img`

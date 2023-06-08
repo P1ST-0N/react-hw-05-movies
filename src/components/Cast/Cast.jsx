@@ -5,12 +5,14 @@ import css from "./cast.module.css";
 import PropTypes from "prop-types";
 
 import userImg from "../../img/user.jpg";
+import { useLocation, Link } from "react-router-dom";
 
 const Cast = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const { movieId } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     const getData = async () => {
@@ -36,20 +38,26 @@ const Cast = () => {
         <div className={css.listWrap}>
           <ul className={css.list}>
             {data.map(({ name, character, profile_path, id }) => (
-              <li key={id} className={css.listItem}>
-                {profile_path ? (
-                  <img
-                    className={css.listImg}
-                    alt={name}
-                    src={`https://image.tmdb.org/t/p/w92${profile_path}`}
-                  />
-                ) : (
-                  <img className={css.listImg} alt={name} src={userImg} />
-                )}
+              <Link
+                to={`/cast/${id}`}
+                state={{ from: location }}
+                style={{ textDecoration: "none" }}
+              >
+                <li key={id} className={css.listItem}>
+                  {profile_path ? (
+                    <img
+                      className={css.listImg}
+                      alt={name}
+                      src={`https://image.tmdb.org/t/p/w92${profile_path}`}
+                    />
+                  ) : (
+                    <img className={css.listImg} alt={name} src={userImg} />
+                  )}
 
-                <p className={css.listName}>{name}</p>
-                <p className={css.listCharacter}>{character}</p>
-              </li>
+                  <p className={css.listName}>{name}</p>
+                  <p className={css.listCharacter}>{character}</p>
+                </li>
+              </Link>
             ))}
           </ul>
         </div>

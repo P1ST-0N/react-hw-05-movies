@@ -18,11 +18,24 @@ const Home = () => {
   //   getTrendingMovies().then((data) => setFilms(data.results));
   // }, []);
 
+  
+
+
+
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
-        const data = await getTrendingMovies();
+        let data = await getTrendingMovies();
+
+        data = data.map(el => {
+          return {
+            ...el,
+            vote_average: el.vote_average.toFixed(1),
+            popularity: el.popularity.toString().substring(0, 2),
+          }
+        })
+
         setData(data);
         setLoading(false);
       } catch (error) {
